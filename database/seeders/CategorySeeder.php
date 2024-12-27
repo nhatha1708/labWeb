@@ -22,7 +22,8 @@ class CategorySeeder extends Seeder
 
     private function getCategories()
     {
-        return $this->categories;
+        return
+         $this->categories;
     }
 
     /**
@@ -30,8 +31,15 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
+        // Tạo 1000 bản ghi ngẫu nhiên
+        Category::factory(1000)->create();
+        // foreach ($this->getCategories() as $category) {
+        //     Category::create($category);
+        // }
+        // Chèn các danh mục tĩnh
         foreach ($this->getCategories() as $category) {
-            Category::create($category);
+            Category::firstOrCreate(['name' => $category['name']], $category);
         }
     }
+
 }

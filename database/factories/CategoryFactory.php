@@ -18,7 +18,7 @@ class CategoryFactory extends Factory
     {
         return [
             'name' => fake()->sentence(),
-            'description' => fake()->paragraph(),
+            'description' => $this->faker->sentence(10), // Giới hạn độ dài
         ];
     }
 }
